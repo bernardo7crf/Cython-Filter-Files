@@ -173,7 +173,7 @@ cpdef np.ndarray[np.float64_t, ndim=2] pksmooth_openmp(double[:, :] pk_nw,
             for j in range(count, p_extended_len):
                 log_p_extended[i, j] = log(p_highk[i, j - count]) 
 
-            if interpolate(&log_k_extended[0], &log_p_extended[i,0], &x_interp[0], &y_interp[i, 0], p_extended_len, p, 0) != 0:
+            if interpolate(&log_k_extended[0], &log_p_extended[i,0], &x_interp[0], &y_interp[i, 0], p_extended_len, p, 1) != 0:
                 with gil:
                     raise ValueError("Interpolation failed")
 
