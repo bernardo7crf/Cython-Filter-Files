@@ -18,13 +18,11 @@ def smear_bao_vec(ks, pk, pk_nw, par):
 
 def smooth_bao_ver2(ks, pk, n=15):
  
-    def linear_extrapolation_below(x, y, xi):
-        # Use the first two points for extrapolation
+    def linear_extrapolation_below(x, y, xi):        
         y_extrapolated = y[:, 0].reshape(-1, 1) + (xi - x[0]) * (y[:, 1].reshape(-1, 1) - y[:, 0].reshape(-1, 1)) / (x[1] - x[0])
         return y_extrapolated
 
-    def linear_extrapolation_above(x, y, xi):
-        # Use the first two points for extrapolation
+    def linear_extrapolation_above(x, y, xi):   
         y_extrapolated = y[:, -1].reshape(-1, 1) + (xi - x[-1]) * (y[:, -1].reshape(-1, 1) - y[:, -2].reshape(-1, 1)) / (x[-1] - x[-2])
         return y_extrapolated
 
@@ -133,12 +131,10 @@ def smooth_bao_ver2(ks, pk, n=15):
 def smooth_bao_ver1(ks, pk, n=15):
  
     def linear_extrapolation_below(x, y, xi):
-        # Use the first two points for extrapolation
         y_extrapolated = y[:, 0].reshape(-1, 1) + (xi - x[0]) * (y[:, 1].reshape(-1, 1) - y[:, 0].reshape(-1, 1)) / (x[1] - x[0])
         return y_extrapolated
 
     def linear_extrapolation_above(x, y, xi):
-        # Use the first two points for extrapolation
         y_extrapolated = y[:, -1].reshape(-1, 1) + (xi - x[-1]) * (y[:, -1].reshape(-1, 1) - y[:, -2].reshape(-1, 1)) / (x[-1] - x[-2])
         return y_extrapolated
 
